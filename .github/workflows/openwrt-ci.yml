@@ -21,7 +21,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    if: github.event.repository.owner.id == github.event.sender.id
+    # if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
 
@@ -51,7 +51,9 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          make defconfig
+          sed -i 's/# CONFIG_PACKAGE_ipv6helper/CONFIG_PACKAGE_ipv6helper/g'
 
       - name: Make download
         run: |
