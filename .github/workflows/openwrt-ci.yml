@@ -55,7 +55,7 @@ jobs:
       - name: Generate configuration file
         run: |
           make defconfig
-          sed -i 's/# CONFIG_PACKAGE_ipv6helper/CONFIG_PACKAGE_ipv6helper/g'
+          sed -i 's/# CONFIG_PACKAGE_ipv6helper/CONFIG_PACKAGE_ipv6helper/g' .config
 
       - name: Make download
         run: |
